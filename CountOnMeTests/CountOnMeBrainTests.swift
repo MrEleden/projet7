@@ -9,8 +9,8 @@
 import XCTest
 @testable import CountOnMe
 
-class CountOnMeBrain: XCTestCase {
+class CountOnMeBrainTests: XCTestCase {
     
-    func testGiven
+    
     
 }
