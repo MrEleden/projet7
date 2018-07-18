@@ -25,6 +25,7 @@ class ViewController: UIViewController {
         }
         return true
     }
+    
     var canAddOperator: Bool {
         if let stringNumber = countOnMeBrain.stringNumbers.last {
             if stringNumber.isEmpty {
@@ -63,10 +64,27 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func multiply() {
+        if canAddOperator {
+            countOnMeBrain.operators.append("x")
+            countOnMeBrain.stringNumbers.append("")
+            updateDisplay()
+        }
+    }
+    
+    @IBAction func divide() {
+        if canAddOperator {
+            countOnMeBrain.operators.append("÷")
+            countOnMeBrain.stringNumbers.append("")
+            updateDisplay()
+        }
+    }
+    
+    
     @IBAction func equal() {
         calculateTotal()
     }
-
+    
     //MARK: - Methods
     private func updateDisplay() {
         var text = ""
@@ -88,8 +106,15 @@ class ViewController: UIViewController {
             if let number = Int(stringNumber) {
                 if countOnMeBrain.operators[index] == "+" {
                     total += number
-                } else if countOnMeBrain.operators[index] == "-" {
+                }
+                if countOnMeBrain.operators[index] == "-" {
                     total -= number
+                }
+                if countOnMeBrain.operators[index] == "x" {
+                    total *= number
+                }
+                if countOnMeBrain.operators[index] == "÷" {
+                    total = total / number
                 }
             }
         }
