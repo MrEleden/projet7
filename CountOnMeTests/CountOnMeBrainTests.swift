@@ -14,9 +14,9 @@ class CountOnMeBrainTests: XCTestCase {
     let numberString = CountOnMeBrain()
     
     func testGivenNumberStringIsNil_WhenAddNewNumber_ThenNumberStringIsNotNil() {
-        numberString.addNewNumber(1)
+        numberString.addNewNumber(1234)
         
-        XCTAssert(numberString.stringNumbers[numberString.stringNumbers.count-1] == "1")
+        XCTAssert(numberString.stringNumbers[numberString.stringNumbers.count-1] == "1234")
     }
     
     func testGivenNumberStringIsNotClear_WhenClear_ThenNumberStringIsClear() {
@@ -26,6 +26,4 @@ class CountOnMeBrainTests: XCTestCase {
         XCTAssert(numberString.operators == ["+"])
         XCTAssert(numberString.index == 0)
     }
-    
-    
 }
