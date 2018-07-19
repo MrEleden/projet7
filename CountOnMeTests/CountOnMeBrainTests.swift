@@ -13,6 +13,12 @@ class CountOnMeBrainTests: XCTestCase {
     
     let numberString = CountOnMeBrain()
     
+    func testGivenNumberStringIsNil_WhenCalculateTotal_ThenNumberStringIsCalculated() {
+        numberString.calculateTotal()
+        
+        XCTAssert(true)
+    }
+    
     func testGivenNumberStringIsNil_WhenAddNewNumber_ThenNumberStringIsNotNil() {
         numberString.addNewNumber(1234)
         

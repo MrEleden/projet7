@@ -14,7 +14,7 @@ class CountOnMeBrain {
     var stringNumbers: [String] = [String()]
     var operators: [String] = ["+"]
     var index = 0
-     var total = 0
+    var total = 0
     
     //MARK: - Methods
     func calculateTotal() {
