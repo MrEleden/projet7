@@ -27,11 +27,8 @@ class ViewController: UIViewController {
     }
     
     var canAddOperator: Bool {
-        if let stringNumber = countOnMeBrain.stringNumbers.last {
-            if stringNumber.isEmpty {
-                alertIncorrectExpression()
-                return false
-            }
+        if textView.text == "\(countOnMeBrain.total)" {
+            updateDisplay()
         }
         return true
     }
@@ -43,15 +40,15 @@ class ViewController: UIViewController {
     //MARK: - Action
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         for (index, numberButton) in numberButtons.enumerated() where sender == numberButton {
-                countOnMeBrain.addNewNumber(index)
-                updateDisplay()
-            }
+            countOnMeBrain.addNewNumber(index)
+            updateDisplay()
         }
+    }
 
     @IBAction func plus() {
         if canAddOperator {
-        	countOnMeBrain.operators.append("+")
-        	countOnMeBrain.stringNumbers.append("")
+            countOnMeBrain.operators.append("+")
+            countOnMeBrain.stringNumbers.append("")
             updateDisplay()
         }
     }
@@ -64,25 +61,9 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func multiply() {
-        if canAddOperator {
-            countOnMeBrain.operators.append("x")
-            countOnMeBrain.stringNumbers.append("")
-            updateDisplay()
-        }
-    }
-    
-    @IBAction func divide() {
-        if canAddOperator {
-            countOnMeBrain.operators.append("÷")
-            countOnMeBrain.stringNumbers.append("")
-            updateDisplay()
-        }
-    }
-    
-    
     @IBAction func equal() {
-        calculateTotal()
+        countOnMeBrain.calculateTotal()
+        textView.text = textView.text + "=\(countOnMeBrain.total)"
     }
     
     //MARK: - Methods
@@ -99,29 +80,6 @@ class ViewController: UIViewController {
         textView.text = text
     }
     
-    private func calculateTotal() {
-        checkingIsExpressionCorrect()
-        var total = 0
-        for (index, stringNumber) in countOnMeBrain.stringNumbers.enumerated() {
-            if let number = Int(stringNumber) {
-                if countOnMeBrain.operators[index] == "+" {
-                    total += number
-                }
-                if countOnMeBrain.operators[index] == "-" {
-                    total -= number
-                }
-                if countOnMeBrain.operators[index] == "x" {
-                    total *= number
-                }
-                if countOnMeBrain.operators[index] == "÷" {
-                    total = total / number
-                }
-            }
-        }
-        textView.text = textView.text + "=\(total)"
-        countOnMeBrain.clear()
-    }
-    
     private func checkingIsExpressionCorrect() {
         if !isExpressionCorrect {
             return
@@ -129,19 +87,19 @@ class ViewController: UIViewController {
     }
     
     private func alertStartNewCalculation() {
-        let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul !", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Zéro!", message: "Démarrez un nouveau calcul!", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
     
     private func alertWriteCorrectExpression() {
-        let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte !", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Zéro!", message: "Entrez une expression correcte!", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
     
     private func alertIncorrectExpression() {
-        let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte !", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Zéro!", message: "Expression incorrecte!", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         self.present(alertVC, animated: true, completion: nil)
     }
