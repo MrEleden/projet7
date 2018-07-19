@@ -28,6 +28,12 @@ class ViewController: UIViewController {
     
     var canAddOperator: Bool {
         if textView.text == "\(countOnMeBrain.total)" {
+            if let stringNumber = countOnMeBrain.stringNumbers.last {
+                if stringNumber.isEmpty {
+                    alertIncorrectExpression()
+                    return false
+                }
+            } 
             updateDisplay()
         }
         return true
