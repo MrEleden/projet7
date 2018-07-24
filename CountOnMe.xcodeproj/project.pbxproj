@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95301F9A21062A870092F8CC /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95301F9921062A870092F8CC /* UIViewController.swift */; };
 		953C9B1320F4B05B002DDB9D /* CountOnMeBrainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953C9B1220F4B05B002DDB9D /* CountOnMeBrainTests.swift */; };
 		95A0387B20F36C3100B17FB0 /* CountOnMeBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A0387A20F36C3100B17FB0 /* CountOnMeBrain.swift */; };
 		C926DADD1D7581BB00477020 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C926DADC1D7581BB00477020 /* AppDelegate.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95301F9921062A870092F8CC /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		953C9B0820F4AFCF002DDB9D /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		953C9B0C20F4AFCF002DDB9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		953C9B1220F4B05B002DDB9D /* CountOnMeBrainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountOnMeBrainTests.swift; sourceTree = "<group>"; };
@@ -58,6 +60,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95301F9821062A6C0092F8CC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				95301F9921062A870092F8CC /* UIViewController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		95301F9B21062E4F0092F8CC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C926DAE01D7581BB00477020 /* Main.storyboard */,
+				C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		953C9B0920F4AFCF002DDB9D /* CountOnMeTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -86,10 +105,9 @@
 		95A0387C20F36CC800B17FB0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C926DAE81D7581BB00477020 /* Info.plist */,
 				C926DADC1D7581BB00477020 /* AppDelegate.swift */,
-				C926DAE01D7581BB00477020 /* Main.storyboard */,
 				C926DAE31D7581BB00477020 /* Assets.xcassets */,
-				C926DAE51D7581BB00477020 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -116,7 +134,8 @@
 		C926DADB1D7581BB00477020 /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
-				C926DAE81D7581BB00477020 /* Info.plist */,
+				95301F9B21062E4F0092F8CC /* View */,
+				95301F9821062A6C0092F8CC /* Extensions */,
 				95A0387720F367EF00B17FB0 /* Model */,
 				95A0387620F367DE00B17FB0 /* Controller */,
 			);
@@ -238,6 +257,7 @@
 			files = (
 				C926DADF1D7581BB00477020 /* ViewController.swift in Sources */,
 				C926DADD1D7581BB00477020 /* AppDelegate.swift in Sources */,
+				95301F9A21062A870092F8CC /* UIViewController.swift in Sources */,
 				95A0387B20F36C3100B17FB0 /* CountOnMeBrain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,11 +452,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Zozor+/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ambroisecollon.CountOnMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -446,11 +466,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = "Zozor+/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ambroisecollon.CountOnMe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
