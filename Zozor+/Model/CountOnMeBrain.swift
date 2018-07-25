@@ -8,10 +8,10 @@
 
 import UIKit
 
-protocol CountOnMeBrainDelegate {
-    func updateTextView(text: String)
+protocol CountOnMeDelegate {
+    func updateTextView(label: String)
+    func alertShow(title: String, message: String)
 }
-
 
 class CountOnMeBrain {
     
@@ -20,14 +20,14 @@ class CountOnMeBrain {
     var operators: [String] = ["+"]
     var index = 0
     var total = 0
-    var countOnMeBrainDelegate: CountOnMeBrainDelegate?
+    var countOnMeDelegate: CountOnMeDelegate?
     var isExpressionCorrect: Bool {
         if let stringNumber = stringNumbers.last {
             if stringNumber.isEmpty {
                 if stringNumbers.count == 1 {
-                   // showAlert(title: "Zéro!", message: "Démarrez un nouveau calcul!")
+                    countOnMeDelegate?.alertShow(title: "Zéro!", message: "Démarrez un nouveau calcul!")
                 } else {
-                    //showAlert(title: "Zéro!", message: "Entrez une expression correcte!")
+                    countOnMeDelegate?.alertShow(title: "Zéro!", message: "Entrez une expression correcte!")
                 }
                 return false
             }
@@ -36,15 +36,11 @@ class CountOnMeBrain {
     }
     
     var canAddOperator: Bool {
-        if ((countOnMeBrainDelegate?.updateTextView(text: "\(total)")) != nil) {
-       // if textView.text == "\(total)" {
-            if let stringNumber = stringNumbers.last {
-                if stringNumber.isEmpty {
-                   // showAlert(title: "Zéro!", message: "Expression incorrecte!")
-                    return false
-                }
+        if let stringNumber = stringNumbers.last {
+            if stringNumber.isEmpty {
+                countOnMeDelegate?.alertShow(title: "Zéro!", message: "Expression incorrecte!")
+                return false
             }
-            updateDisplay()
         }
         return true
     }
@@ -56,9 +52,13 @@ class CountOnMeBrain {
             stringNumberMutable += "\(newNumber)"
             stringNumbers[stringNumbers.count-1] = stringNumberMutable
         }
+        updateDisplay()
     }
     
     func calculateTotal() {
+        if !isExpressionCorrect {
+            return
+        }
         for (index, stringNumber) in stringNumbers.enumerated() {
             if let number = Int(stringNumber) {
                 if operators[index] == "+" {
@@ -68,6 +68,8 @@ class CountOnMeBrain {
                 }
             }
         }
+        countOnMeDelegate?.updateTextView(label: "=\(total)")
+       // textView.text = textView.text + "=\(total)"
         clear()
     }
     
@@ -103,8 +105,8 @@ class CountOnMeBrain {
             // Add number
             text += stringNumber
         }
-        countOnMeBrainDelegate?.updateTextView(text: text)
-       // textView.text = text
+        countOnMeDelegate?.updateTextView(label: text)
+       //textView.text = text
     }
 }
 

@@ -41,15 +41,17 @@ class ViewController: UIViewController {
     
     @IBAction func equal() {
         countOnMeBrain.calculateTotal()
-        textView.text = textView.text + "=\(countOnMeBrain.total)"
     }
     
     //MARK: - Methods
 }
 
-extension ViewController: CountOnMeBrainDelegate {
-    func updateTextView(text: String) {
-        textView.text = text
+extension ViewController: CountOnMeDelegate {
+    func updateTextView(label: String) {
+        textView.text = label
+    }
+    func alertShow(title: String, message: String) {
+        updateShowAlert(title: title, message: message)
     }
 }
 
