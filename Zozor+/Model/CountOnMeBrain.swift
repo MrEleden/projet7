@@ -17,7 +17,7 @@ class CountOnMeBrain {
     
     //MARK: - Properties
     var stringNumbers: [String] = [String()]
-    var operators: [String] = ["+"]
+    var operators: [String] = ["+"] // pas d'opérateur - ?
     var index = 0
     var total = 0
     var countOnMeDelegate: CountOnMeDelegate?
@@ -27,6 +27,7 @@ class CountOnMeBrain {
                 if stringNumbers.count == 1 {
                     countOnMeDelegate?.alertShow(title: "Zéro!", message: "Démarrez un nouveau calcul!")
                 } else {
+                    //ajouter un test confirmant de rentrer des nombres si lettres , etc ....
                     countOnMeDelegate?.alertShow(title: "Zéro!", message: "Entrez une expression correcte!")
                 }
                 return false
@@ -75,7 +76,7 @@ class CountOnMeBrain {
     
     func clear() {
         stringNumbers = [String()]
-        operators = ["+"]
+        operators = ["+"] // opérateurs uniquement + ?
         index = 0
     }
     
@@ -94,7 +95,7 @@ class CountOnMeBrain {
             updateDisplay()
         }
     }
-    
+    // une fonction autre que clear qui delete le dernier char
     func updateDisplay() {
         var text = ""
         for (index, stringNumber) in stringNumbers.enumerated() {
